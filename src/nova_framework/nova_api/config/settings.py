@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphql_api',
+    'grpc_api',
+    'rest_api',
+    'websocket',
 ]
 
 MIDDLEWARE = [

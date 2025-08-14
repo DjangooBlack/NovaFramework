@@ -10,35 +10,41 @@ authors = [
 ]
 dependencies = [
     "asyncio>=4.0.0",
-    "django>=5.2.4",
+    "django>=5.2.5",
     "django-extensions>=4.1",
     "django-filter>=25.1",
     "django-graphql-jwt>=0.4.0",
-    "djangorestframework>=3.16.0",
+    "djangorestframework>=3.16.1",
     "ecdsa>=0.19.1",
     "graphene-django>=3.2.3",
     "grpcio>=1.74.0",
+    "gunicorn>=23.0.0",
     "ipfshttpclient>=0.7.0",
     "markdown>=3.8.2",
-    "redis[hiredis]>=6.2.0",
+    "redis[hiredis]>=6.4.0",
     "rich>=14.1.0",
     "typer>=0.16.0",
+    "uvicorn>=0.35.0",
     "wasmtime>=35.0.0",
     "web3>=7.13.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=7.0.0",
-    "black>=22.0.0",
-    "isort>=5.0.0",
-    "mypy>=0.910",
-    "flake8>=3.9.0",
+    "black>=25.1.0",
+    "flake8>=7.3.0",
+    "isort>=6.0.1",
+    "mypy>=1.17.1",
     "pyinstrument>=5.1.1",
+    "pytest>=8.4.1",
 ]
 
 [project.scripts]
 nova = "nova_cli.cli.main:app"
+nova-run = "nova_cli.cli.run:main"
+nova-stop = "nova_cli.cli.stop:main"
+nova-shell = "nova_cli.cli.shell:main"
+nova-test = "nova_tests.run_tests:main"
 
 [tool.uv.build-backend]
 module-root = "nova_framework"
