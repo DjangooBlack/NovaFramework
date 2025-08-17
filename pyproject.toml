@@ -53,10 +53,12 @@ module-root = "nova_framework"
 module-name = [
     "nova_blockchain",
     "nova_cli",
-    "nova_consensus",
+    "nova_config",
+    "nova_consensus/dpos",
     "nova_contracts",
     "nova_crosschain",
     "nova_dapp",
+    "nova_governance",
     "nova_ipfs",
     "nova_nft",
     "nova_p2p",
