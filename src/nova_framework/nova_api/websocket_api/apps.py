@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GraphqlApiConfig(AppConfig):
+class WebsocketApiConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "graphql_api"
+    name = "websocket_api"

@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pv%a@px2vz^prlt8nq0r731-1!0ig&9w9w%^^wgmxvid95qu*v'
+SECRET_KEY = 'django-insecure-l#1b4ig(rrqg*-#^j064np5a+*)3u41shuub276%#7tjhz39u-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'django_grpc_framework',
+    'rest_api',
     'graphql_api',
     'grpc_api',
-    'rest_api',
-    'websocket',
+    'websocket_api',
+
 ]
 
 MIDDLEWARE = [
@@ -80,7 +83,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+   # "customers": {
+   #     'ENGINE': 'django.db.backends.postgresql',
+   #     'NAME': 'postgres',
+   #     'USER': 'masteruser',
+   #     'PASSWORD': '12345678',
+   #     'HOST': 'localhost',
+   #     'PORT': '5432'
+   #  },
 }
 
 
@@ -124,3 +135,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REST Framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+}
+
+# GraphQL settings
+
+GRAPHENE = {
+    "SCHEMA": "django_root.schema.schema"
+}

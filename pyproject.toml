@@ -14,10 +14,12 @@ dependencies = [
     "django-extensions>=4.1",
     "django-filter>=25.1",
     "django-graphql-jwt>=0.4.0",
+    "djangogrpcframework>=0.2.1",
     "djangorestframework>=3.16.1",
     "ecdsa>=0.19.1",
     "graphene-django>=3.2.3",
     "grpcio>=1.74.0",
+    "grpcio-tools>=1.74.0",
     "gunicorn>=23.0.0",
     "ipfshttpclient>=0.7.0",
     "markdown>=3.8.2",
@@ -49,7 +51,6 @@ nova-test = "nova_tests.run_tests:main"
 [tool.uv.build-backend]
 module-root = "nova_framework"
 module-name = [
-    "nova_api",
     "nova_blockchain",
     "nova_cli",
     "nova_consensus",
