@@ -1,40 +1,37 @@
 [project]
-name = "nova-framework"
-version = "0.1.0"
+name = "novaframework"
+version = "0.0.dev0"
 description = "novaframemork_is_prototype"
-license = "MIT"
 readme = "README.md"
-requires-python = ">=3.13.5"
+license = "MIT"
 authors = [
     { name = "djangooblack", email = "qhalil6060@gmail.com" }
 ]
+requires-python = ">=3.13.5"
 dependencies = [
     "asyncio>=4.0.0",
+    "ecdsa>=0.19.1",
+    "wasmtime>=36.0.0",
+    "web3>=7.13.0",
+]
+
+[dependency-groups]
+api = [
     "django>=5.2.5",
     "django-extensions>=4.1",
     "django-filter>=25.1",
     "django-graphql-jwt>=0.4.0",
     "djangogrpcframework>=0.2.1",
     "djangorestframework>=3.16.1",
-    "ecdsa>=0.19.1",
+    "djangorestframework-api-key==3.*",
     "graphene-django>=3.2.3",
     "grpcio>=1.74.0",
-    "grpcio-tools>=1.74.0",
     "gunicorn>=23.0.0",
-    "ipfshttpclient>=0.7.0",
-    "markdown>=3.8.2",
-    "redis[hiredis]>=6.4.0",
-    "rich>=14.1.0",
-    "typer>=0.16.0",
-    "uvicorn>=0.35.0",
-    "wasmtime>=35.0.0",
-    "web3>=7.13.0",
 ]
-
-[dependency-groups]
 dev = [
     "black>=25.1.0",
     "flake8>=7.3.0",
+    "grpcio-tools>=1.74.0",
     "isort>=6.0.1",
     "mypy>=1.17.1",
     "pyinstrument>=5.1.1",
@@ -42,34 +39,10 @@ dev = [
 ]
 
 [project.scripts]
-nova = "nova_cli.run_cli.main:app"
-nova-run = "nova_cli.run_cli.run:main"
-nova-stop = "nova_cli.run_cli.stop:main"
-nova-shell = "nova_cli.run_cli.shell:main"
-nova-test = "nova_tests.run_tests:main"
 
 [tool.uv.build-backend]
-module-root = "nova_framework"
-module-name = [
-    "nova_blockchain",
-    "nova_cli",
-    "nova_config",
-    "nova_consensus/dpos",
-    "nova_contracts",
-    "nova_crosschain",
-    "nova_dapp",
-    "nova_governance",
-    "nova_ipfs",
-    "nova_nft",
-    "nova_p2p",
-    "nova_staking",
-    "nova_storage",
-    "nova_tests",
-    "nova_txpool",
-    "nova_vm",
-    "nova_wallet",
-    "nova_zkp",
-]
+module-root = "src"
+module-name = []
 namespace = true
 
 [build-system]
