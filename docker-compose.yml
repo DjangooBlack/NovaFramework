@@ -1,0 +1,71 @@
+services:
+  nova_ui:
+    build:
+      context: contextPath
+      dockerfile: Dockerfile
+    depends_on:
+      - nova_core
+      - nova_api
+    networks:
+      - nova_api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./path/to/local/dir:/app/local/dir
+
+  nova_api:
+    build:
+      context: contextPath
+      dockerfile: Dockerfile
+    depends_on:
+      - nova_core
+    ports:
+      - "3001:3001"
+    networks:
+      - nova_api
+
+  nova_core:
+    build:
+      context: contextPath
+      dockerfile: Dockerfile
+    depends_on:
+      - nova_db
+    environment:
+      DATABASE_URL: postgres://user:password@nova_db:5432/nova_db
+    networks:
+      - nova_db
+
+  nova_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: nova_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nova_db
+
+volumes:
+  db_data:
+  nova_ui_data:
+  nova_api_data:
+  nova_core_data:
+
+networks:
+  nova_ui:
+    driver: bridge
+
+  nova_api:
+    driver: bridge
+
+  nova_db:
+    driver: bridge
+
+  nova_core:
+    driver: bridge
